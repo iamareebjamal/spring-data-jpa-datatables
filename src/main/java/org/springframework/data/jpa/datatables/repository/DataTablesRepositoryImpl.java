@@ -48,7 +48,7 @@ public class DataTablesRepositoryImpl<T, ID extends Serializable> extends Simple
   public <R> DataTablesOutput<R> findAll(DataTablesInput input,
       Specification<T> additionalSpecification, Specification<T> preFilteringSpecification,
       Function<T, R> converter) {
-    DataTablesOutput<R> output = new DataTablesOutput<R>();
+    DataTablesOutput<R> output = new DataTablesOutput<>();
     output.setDraw(input.getDraw());
     if (input.getLength() == 0) {
       return output;
@@ -62,7 +62,7 @@ public class DataTablesRepositoryImpl<T, ID extends Serializable> extends Simple
       }
       output.setRecordsTotal(recordsTotal);
 
-      SpecificationBuilder<T> specificationBuilder = new SpecificationBuilder<T>(input);
+      SpecificationBuilder<T> specificationBuilder = new SpecificationBuilder<>(input);
       Page<T> data = findAll(
               Specification.where(specificationBuilder.build())
                       .and(additionalSpecification)
